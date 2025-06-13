@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loan Approval Predictor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Loan Approval Predictor</h2>
+    <form method="POST" autocomplete="off">
+      <input type="number" name="ApplicantIncome" placeholder="Applicant Income(monthly)" min="0" required
+             value="{{ form_data.get('ApplicantIncome', '') }}" />
+      <input type="number" name="CoapplicantIncome" placeholder="Coapplicant Income(monthly)" min="0" required
+             value="{{ form_data.get('CoapplicantIncome', '') }}" />
+      <input type="number" name="LoanAmount" placeholder="Loan Amount" min="0" required
+             value="{{ form_data.get('LoanAmount', '') }}" />
+      <input type="number" name="Loan_Amount_Term" placeholder="Loan Term (months)" min="0" required
+             value="{{ form_data.get('Loan_Amount_Term', '') }}" />
+
+      <select name="Credit_History" required>
+        <option value="" disabled {% if not form_data.get('Credit_History') %}selected{% endif %}>Credit History</option>
+        <option value="1" {% if form_data.get('Credit_History') == '1' %}selected{% endif %}>Good</option>
+        <option value="0" {% if form_data.get('Credit_History') == '0' %}selected{% endif %}>Bad</option>
+      </select>
+
+      <select name="Gender" required>
+        <option value="" disabled {% if not form_data.get('Gender') %}selected{% endif %}>Gender</option>
+        <option value="1" {% if form_data.get('Gender') == '1' %}selected{% endif %}>Male</option>
+        <option value="0" {% if form_data.get('Gender') == '0' %}selected{% endif %}>Female</option>
+      </select>
+
+      <select name="Married" required>
+        <option value="" disabled {% if not form_data.get('Married') %}selected{% endif %}>Married</option>
+        <option value="1" {% if form_data.get('Married') == '1' %}selected{% endif %}>Yes</option>
+        <option value="0" {% if form_data.get('Married') == '0' %}selected{% endif %}>No</option>
+      </select>
+
+      <select name="Education" required>
+        <option value="" disabled {% if not form_data.get('Education') %}selected{% endif %}>Education</option>
+        <option value="1" {% if form_data.get('Education') == '1' %}selected{% endif %}>Graduate</option>
+        <option value="0" {% if form_data.get('Education') == '0' %}selected{% endif %}>Not Graduate</option>
+      </select>
+
+      <select name="Self_Employed" required>
+        <option value="" disabled {% if not form_data.get('Self_Employed') %}selected{% endif %}>Self Employed</option>
+        <option value="1" {% if form_data.get('Self_Employed') == '1' %}selected{% endif %}>Yes</option>
+        <option value="0" {% if form_data.get('Self_Employed') == '0' %}selected{% endif %}>No</option>
+      </select>
+
+      <select name="Dependents" required>
+        <option value="" disabled {% if not form_data.get('Dependents') %}selected{% endif %}>Number of Dependents</option>
+        <option value="0" {% if form_data.get('Dependents') == '0' %}selected{% endif %}>0</option>
+        <option value="1" {% if form_data.get('Dependents') == '1' %}selected{% endif %}>1</option>
+        <option value="2" {% if form_data.get('Dependents') == '2' %}selected{% endif %}>2</option>
+        <option value="3+" {% if form_data.get('Dependents') == '3+' %}selected{% endif %}>3+</option>
+      </select>
+
+      <select name="Property_Area" required>
+        <option value="" disabled {% if not form_data.get('Property_Area') %}selected{% endif %}>Property Area</option>
+        <option value="Rural" {% if form_data.get('Property_Area') == 'Rural' %}selected{% endif %}>Rural</option>
+        <option value="Semiurban" {% if form_data.get('Property_Area') == 'Semiurban' %}selected{% endif %}>Semiurban</option>
+        <option value="Urban" {% if form_data.get('Property_Area') == 'Urban' %}selected{% endif %}>Urban</option>
+      </select>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result">Prediction: {{ prediction }}</div>
+      {% if reason %}
+      <div class="reason">Reason: {{ reason }}</div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+</body>
+</html>
