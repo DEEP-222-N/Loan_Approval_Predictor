@@ -7,7 +7,7 @@ This project involves building a machine learning-based web application that pre
 
 The application enables users to input key applicant details such as gender, marital status, applicant income, loan amount, employment status, credit history, and property area. Based on this data, the trained model predicts whether the loan is likely to be approved or not.
 
-Key highlights:
+**Key highlights**:
 
 Supervised learning model trained on a labeled dataset of past loan approvals
 
@@ -19,7 +19,7 @@ Real-time prediction displayed instantly after submission
 
 Clean UI design with a responsive layout for smooth user experience
 
-Tech stack:
+**Tech stack**:
 
 Python and Scikit-learn for model training and inference
 
