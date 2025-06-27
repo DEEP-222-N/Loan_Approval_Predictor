@@ -54,7 +54,7 @@ The **Loan Approval Predictor** is a machine learning web application that deter
 
 1. **Clone the Repository**
 
-```git clone https://github.com/yourusername/loan-approval-predictor.git```
+```git clone https://github.com/DEEP-222-N/Loan_Approval_Predictor```
 
 ```cd loan-approval-predictor```
 
